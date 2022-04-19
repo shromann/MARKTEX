@@ -2,13 +2,20 @@
 	import Banner from "./Banner.svelte"
 	import MDtoLatex from "./MDtoLatex.js";
 	let text = '';
+
+	$: latex = MDtoLatex(text).split('\n');
+
+
 </script>
 
 <Banner/>
 <main>
-	
 	<textarea bind:value={text}></textarea>
-	<div class="output">{MDtoLatex(text)}</div>
+	<div class="output">
+		{#each latex as line}
+			{line}<br>
+		{/each}
+	</div>
 </main>
 
 <style>
@@ -24,6 +31,7 @@
 		font-family: monospace;
 		font-size: 1.4em ;
 		border: #ccc 1px solid;
+		padding: 10px;
 	}
 
 	textarea {
@@ -32,6 +40,6 @@
 		border: 1px solid #ccc;
 		font-size: 1.4em;
 		font-family: monospace;
-	}
-	
+		padding: 10px;
+	}	
 </style>

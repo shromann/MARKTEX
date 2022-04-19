@@ -6,24 +6,21 @@
 
 export default function MDToLate(md) {  
 
-  console.log(md);
-
   md = md.replace(/\n/g, "\n");
-  md = md.replace(/(#) ([\w ]+)/, "\\section{$2}");
-  md = md.replace(/(##) ([\w ]+)/, "\\subsection{$2}");
-  md = md.replace(/(###) ([\w ]+)/, "\\subsubsection{$2}");
+  md = md.replace(/(#) ([\w ]+)/g, "\\section{$2}");
+  md = md.replace(/(#\\section{([\w ]+)})/g, "\\subsection{$2}");
+  md = md.replace(/(#\\subsection{([\w ]+)})/g, "\\subsubsection{$2}");
   
-  md = md.replace(/(\*)(.*?)\*/, "\\textbf{$2}");
-  md = md.replace(/(\*\*)(.*?)\*\*/, "\\textit{$2}");
-  md = md.replace(/(\$\$)(.*?)\$\$/, "$ $2 $");
-  md = md.replace(/(\$\$\$\$)(.*?)\$\$\$\$/, "$$ $2 $$");
-  md = md.replace(/\n\n\$\$/, "\\begin{equation}");
-  md = md.replace(/\$\$\n\n/, "\\end{equation}");
+  md = md.replace(/(\*)([\w ]+)\*/, "\\textbf{$2}");
+  md = md.replace(/(\*\\textbf{([\w ]+)}\*)/, "\\textit{$2}");
   
-  md = md.replace(/(\*)(.*?)/, "\\item $2");
-  md = md.replace(/\n(\*(.*?)\n)+/, "\\begin{item} $1 \\end{item}");
+  md = md.replace(/(\$\$) (.*?) \$\$/g, "$ $2 $");
 
-
+  md = md.replace(/\n\n\$\$/g, "\\begin{equation}");
+  md = md.replace(/\$\$\n\n/g, "\\end{equation}");
+  
+  md = md.replace(/(\-)(.*?)/g, "\\item $2");
+  
   return md;
 
 }
