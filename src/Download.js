@@ -13,6 +13,7 @@ function down(filename, text) {
 
 
 export default function Download() {
-    const file = document.getElementsByClassName('output')[0].innerHTML.replace(/<br>/g, "\n");
+    const file = document.getElementsByClassName('output')[0].innerHTML.replace(/<br>/g, "\n").replace(/&amp;/g, "&");
+    console.log(file);
     down("output.tex", file);
 }

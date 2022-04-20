@@ -41,7 +41,7 @@
 		{"\\usepackage{amsmath}"}
 		<br/>
 		<br/>
-		{"\\tile{"+ title +"}"}
+		{"\\title{"+ title +"}"}
 		<br/>
 		{"\\author{"+ author +"}"}
 		<br/>
