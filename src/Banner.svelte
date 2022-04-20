@@ -41,9 +41,6 @@
             <SelectItem value="report">report</SelectItem>
             <SelectItem value="article">article</SelectItem>
             <SelectItem value="book">book</SelectItem>
-            <SelectItem value="letter">letter</SelectItem>
-            <SelectItem value="slides">slides</SelectItem>
-            <SelectItem value="thesis">thesis</SelectItem>
         </Select>
     </div>
 </div>
