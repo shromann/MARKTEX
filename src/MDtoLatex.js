@@ -16,9 +16,8 @@ export default function MDToLate(md) {
   
   md = md.replace(/\\beq/g, "\\begin{align*}");
   md = md.replace(/\\eeq/g, "\\end{align*}");
-  md = md.replace(/&amp;/g, "&");
   
-  md = md.replace(/(\-)(.*?)/g, "\\item $2");
+  md = md.replace(/(\*)(.*?)/g, "\\item $2");
   md = md.replace(/(\\item [\w ]+\n)+/g, "\\begin{itemize}\n$&\\end{itemize}\n");
 
   return md;
